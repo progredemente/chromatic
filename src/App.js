@@ -68,7 +68,7 @@ class _App extends Component {
 
     loadData(){
         if(!this.dataCache[this.state.selectedCountry]){
-            fetch(`/data/${this.state.selectedCountry}.json`).then(response => response.json()).then(data => {
+            fetch(`./data/${this.state.selectedCountry}.json`).then(response => response.json()).then(data => {
                 this.dataCache[this.state.selectedCountry] = data;
                 this.setState({data: data});
             }).catch(error => {
