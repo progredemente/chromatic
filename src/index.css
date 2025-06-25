@@ -1,0 +1,93 @@
+* {
+  font-family: ComicTypo;
+  box-sizing: border-box;
+  --text-color: #f29100;
+  --background-color: #FFFF99;
+  --outer-border-radius: 20px;
+  --inner-border-radius: 10px;
+  --padding: 10px;
+  --margin: 10px;
+}
+
+*:focus {
+  outline: none;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  color: black
+}
+
+body {
+  margin: 0;
+  font-size: 1.5em;
+  overscroll-behavior-x: contain;
+}
+
+.apps-bar-container {
+    --apps-bar-primary-color: #f20000 !important;
+    --apps-bar-secondary-color: #f29100 !important;
+}
+
+dialog::backdrop {
+  background-color: black;
+  opacity: 0.5;
+}
+
+dialog {
+  border: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: var(--outer-border-radius);
+  padding: var(--padding);
+  margin: auto auto;
+  max-height: calc(100% - var(--margin)*2);
+  max-width: calc(100% - var(--margin)*2);
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+}
+
+.dialog-header > :not(:last-child){
+  margin-right: 40px;
+}
+
+.close-button {
+    font-size: 50px;
+    padding: 5px;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    cursor: pointer;
+    user-select: none;
+}
+
+.close-button::before{
+  content: "×";
+  display: block;
+}
+
+input[type=number] {
+  appearance: textfield;
+  font-size: 30px;
+  text-align: center;
+  width: 100px;
+  border: 2px solid var(--text-color);
+  border-radius: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

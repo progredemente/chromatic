@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 100 100"
+   version="1.1"
+   id="svg5"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient7187">
+      <stop
+         style="stop-color:#345e56;stop-opacity:1;"
+         offset="0"
+         id="stop7183" />
+      <stop
+         style="stop-color:#004a34;stop-opacity:1;"
+         offset="1"
+         id="stop7185" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient7187"
+       id="linearGradient2445"
+       x1="50"
+       y1="30"
+       x2="55"
+       y2="70"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#linearGradient7187"
+       id="linearGradient6578"
+       gradientUnits="userSpaceOnUse"
+       x1="35"
+       y1="10"
+       x2="40"
+       y2="60" />
+    <linearGradient
+       xlink:href="#linearGradient7187"
+       id="linearGradient6583"
+       gradientUnits="userSpaceOnUse"
+       x1="50"
+       y1="50"
+       x2="55"
+       y2="105" />
+  </defs>
+  <g
+     id="layer1">
+    <rect
+       style="fill:#000000"
+       id="rect119"
+       width="50"
+       height="100"
+       x="25"
+       y="0"
+       ry="5" />
+    <rect
+       style="fill:url(#linearGradient2445);fill-opacity:1.0"
+       id="rect1323"
+       width="44"
+       height="94"
+       x="28"
+       y="3"
+       ry="3" />
+    <path
+       id="rect6580"
+       style="fill:url(#linearGradient6583);fill-opacity:1.0"
+       d="m 72,75 v 19 c 0,1.662 -1.338,3 -3,3 H 31 c -1.662,0 -3,-1.338 -3,-3 V 45 c 17,0 27,30 44,30 z" />
+    <path
+       id="rect6524"
+       style="fill:url(#linearGradient6578);fill-opacity:1"
+       d="M 28,55 V 6 c 0,-1.662 1.338,-3 3,-3 h 38 c 1.662,0 3,1.338 3,3 V 25 C 55,25 45,55 28,55 Z" />
+    <path
+       id="rect6788"
+       d="m 65,2 v 2 c 0,1.662 -1.338,3 -3,3 H 38 C 36.338,7 35,5.662 35,4 V 2 Z" />
+  </g>
+</svg>

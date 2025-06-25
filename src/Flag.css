@@ -1,0 +1,13 @@
+.flag {
+    height: calc(50px * var(--zoom));
+    width: calc(75px * var(--zoom));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .flag > img {
+    max-height: calc(50px * var(--zoom));
+    max-width: calc(75px * var(--zoom));
+    border-radius: calc(var(--inner-border-radius) * var(--zoom));
+  }

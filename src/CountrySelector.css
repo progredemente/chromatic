@@ -1,0 +1,26 @@
+.countries {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.countries > div {
+    margin: var(--margin) 0;
+    padding: var(--padding);
+    border-radius: var(--outer-border-radius);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.country-name {
+    text-align: center;
+    margin-top: var(--margin);
+}
+
+.selected-country {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}

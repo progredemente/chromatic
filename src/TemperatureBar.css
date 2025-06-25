@@ -1,0 +1,159 @@
+.temperature-bar-container {
+    --scale-factor: 1;
+    --margin: 40px;
+    position: absolute;
+    width: calc(100% - var(--scale-factor) * 4 * var(--margin));
+    bottom: 0;
+    z-index: 3;
+    margin: calc(20px * var(--scale-factor)) calc(var(--margin) * 2 * var(--scale-factor));
+}
+
+.small .temperature-bar-container {
+    --scale-factor: 0.5;
+}
+
+.temperature-range {
+    position: absolute;
+    height: calc(40px * var(--scale-factor));
+    width: var(--width);
+    box-sizing: content-box;
+    box-shadow: 0 0 calc(5px * var(--scale-factor));
+    margin-left: var(--position);
+    z-index: 1;
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(30px * var(--scale-factor));
+}
+.temperature-range::before {
+    content: "↔";
+    font-family: ComicIcons;
+    color: var(--temperature-background-color);
+    filter: invert(1) grayscale(1) contrast(1000);
+}
+
+.temperature-limit{
+    position: absolute;
+    height: calc(50px * var(--scale-factor));
+    width: calc(50px * var(--scale-factor));
+    border-radius: calc(55px * var(--scale-factor));
+    margin-left: var(--position);
+    transform: translate(-50%, calc(-10px * var(--scale-factor)));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--temperature-background-color);
+    border: calc(5px * var(--scale-factor)) solid var(--temperature-background-color);
+    box-shadow: 0 0 calc(5px * var(--scale-factor)) black;
+    box-sizing: content-box;
+    font-size: calc(20px * var(--scale-factor));
+    z-index: 1;
+    user-select: none;
+    cursor: grab;
+}
+
+.temperature-limit::before {
+    font-family: ComicIcons;
+    content: var(--before-text);
+    color: transparent;
+    background: var(--temperature-background-color);
+    background-clip: text;
+    filter: invert(1) grayscale(1) contrast(1000);
+    font-size: calc(30px * var(--scale-factor));
+}
+
+.temperature-editor {
+    position: absolute;
+    height: calc(50px * var(--scale-factor));
+    padding: calc(var(--padding) * var(--scale-factor));
+    top: calc(-80px * var(--scale-factor));
+    background-color: inherit;
+    font-size: calc(20px * var(--scale-factor));
+    border-radius: calc(55px * var(--scale-factor));
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    cursor: initial;
+    width: max-content;
+}
+
+.temperature-editor::after{
+    --triangle-width: calc(var(--padding) * 1.5 * var(--scale-factor));
+    display: block;
+    content: "";
+    width: var(--triangle-width);
+    height: var(--triangle-width);
+    position: absolute;
+    top: calc(var(--triangle-width) * 3);
+    left: calc(50% - var(--triangle-width));
+    border: var(--triangle-width) solid transparent;
+    border-top-color: var(--temperature-background-color);
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.temperature-label {
+    color: transparent;
+    background: inherit;
+    background-clip: text;
+    filter: invert(1) grayscale(1) contrast(1000);
+}
+
+.temperature-edit-button {
+    background-color: inherit;
+    filter: invert(1);
+    border-radius: calc(50px * var(--scale-factor));
+    width: calc(40px * var(--scale-factor));
+    height: calc(40px * var(--scale-factor));
+    box-sizing: border-box;
+    margin-left: calc(var(--margin) * var(--scale-factor));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.temperature-edit-button > .icon {
+    color: transparent;
+    background: inherit;
+    background-clip: text;
+    filter: invert(1) grayscale(1) contrast(1000);
+}
+
+
+.temperature-bar::before,
+.temperature-bar::after {
+    position: absolute;
+    display: block;
+    height: 100%;
+    box-shadow: inset 0 0 calc(5px * var(--scale-factor));
+    background-color: rgba(128, 128, 128, 0.75);
+    content: " ";
+    border-radius: calc(20px * var(--scale-factor));
+}
+.temperature-bar::before {
+    width: var(--before-width);
+}
+
+.temperature-bar::after {
+    width: var(--after-width);
+    right: 0;
+}
+
+.temperature-bar {
+    background-image: linear-gradient(
+        to left,
+        black 0%,
+        red calc(100%*1/7),
+        yellow calc(100%*2/7),
+        lime calc(100%*3/7),
+        cyan calc(100%*4/7),
+        blue calc(100%*5/7),
+        magenta calc(100%*6/7),
+        white 100%
+    );
+    height: calc(40px * var(--scale-factor));
+    box-sizing: border-box;
+    border-radius: calc(20px * var(--scale-factor));
+}

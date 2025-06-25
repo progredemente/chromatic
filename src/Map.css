@@ -1,0 +1,69 @@
+canvas {
+    display: block;
+}
+
+.city {
+    position: absolute;
+    z-index: 1;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+.small .city {
+    font-size: 7.5px;
+}
+
+.phone-container {
+    --phone-container-width: calc(var(--padding) * 1.5);
+    --scale-factor: 1;
+    position: absolute;
+    z-index: 1;
+    transform: scale(var(--scale-factor)) translate(-50%, -50%);
+    background-color: white;
+    width: var(--phone-container-width);
+    height: var(--phone-container-width);
+    border-radius: var(--phone-container-width);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .5);
+}
+
+.small .phone-container {
+    --scale-factor: 0.5
+}
+
+.phone-container::after{
+    --triangle-width: var(--phone-container-width);
+    display: block;
+    content: "";
+    width: var(--triangle-width);
+    height: var(--triangle-width);
+    position: absolute;
+    bottom: 5px;
+    left: calc(50% - var(--triangle-width));
+    border: var(--triangle-width) solid transparent;
+    border-top-color: white;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.phone-bubble {
+    --bubble-width: 100px;
+    position: absolute;
+    transform: translate(calc(-50% + var(--phone-container-width) / 2), calc(-100% - 15px));
+    background-color: white;
+    width: var(--bubble-width);
+    height: var(--bubble-width);
+    border-radius: var(--bubble-width);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .5);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.phone-bubble > img {
+    max-width: calc(var(--bubble-width) * .75);
+    max-height: calc(var(--bubble-width) * .75);
+    user-select: none;
+}

@@ -1,0 +1,29 @@
+.country-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: var(--margin);
+    box-sizing: content-box;
+    border-radius: var(--outer-border-radius);
+    position: absolute;
+    z-index: 3;
+    margin: var(--margin);
+    right: 0;
+    user-select: none;
+    cursor: pointer;
+}
+
+.small .country-status {
+    transform: scale(.5) translate(50%, -50%)
+}
+
+.change-country-button {
+    background-color: var(--text-color);
+    color: var(--background-color);
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: var(--inner-border-radius);
+}

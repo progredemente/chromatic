@@ -1,0 +1,17 @@
+.about {
+    max-width: 1000px;
+    width: calc(100% - var(--margin)* 2);
+}
+
+.about-img img {
+    max-width: 300px;
+}
+
+.about-img {
+    text-align: center;
+}
+
+.about-video {
+    display: flex;
+    justify-content: center;
+}

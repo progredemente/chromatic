@@ -1,0 +1,26 @@
+.config-section {
+    margin-top: calc(var(--margin) * 2);
+}
+
+.language-list > div,
+.unit-list > div {
+    padding: var(--padding);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.config-section .selected {
+    background-color: var(--text-color);
+    color: var(--background-color)
+}
+
+.language-list > div > .flag {
+    margin-right: var(--margin);
+}
+
+.unit-list{
+    display: flex;
+    justify-content: center;
+}

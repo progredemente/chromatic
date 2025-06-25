@@ -1,0 +1,23 @@
+.temperature-editor-body {
+    margin: var(--margin) 0;
+    text-align: center;
+}
+
+.temperature-editor-buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.temperature-editor-buttons > div {
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: 5px 10px;
+    border-radius: var(--inner-border-radius);
+    cursor: pointer;
+}
+
+.temperature-editor-error {
+    font-size: 15px;
+    color: red;
+    margin: var(--margin);
+}
