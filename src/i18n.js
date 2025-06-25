@@ -13,7 +13,7 @@ i18n
     load: "languageOnly",
     debug: true,
     backend: {
-        loadPath: '/i18n/{{lng}}.json'
+        loadPath: './i18n/{{lng}}.json'
     },
     detection:{
 
