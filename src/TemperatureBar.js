@@ -3,10 +3,11 @@ import './TemperatureBar.css';
 import {Icon} from 'components/Icon'
 import TemperatureEditor from "./TemperatureEditor";
 import { getFormattedTemperature } from "./utils";
+import { withTranslation } from "react-i18next";
 
 const minDistanceBetweenLimits = 0.2;
 
-class TemperatureBar extends Component {
+class _TemperatureBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +16,8 @@ class TemperatureBar extends Component {
             grabbingRange: false,
             temperatureRange: props.temperatureRange,
             temperatureEditorVisible: false,
-            temperatureEditing: "min"
+            temperatureEditing: "min",
+            helpVisible: localStorage.getItem("chromatic-help-hidden") !== "true"
         };
         this.prevMouseMove = null;
     }
@@ -146,6 +148,26 @@ class TemperatureBar extends Component {
                     ref={(ref) => this.rangeRef = ref}
                 >
                 </div>
+                {
+                    this.state.helpVisible &&
+                    <div
+                        className="temperature-help"
+                        style={{
+                            "--position": `${(this.state.temperatureRange[0] + (this.state.temperatureRange[1] - this.state.temperatureRange[0]) / 2) * 100}%`,
+                            "--temperature-background-color": this.getLabelColor(1 - (this.state.temperatureRange[1] + this.state.temperatureRange[0]) / 2),
+                            "--help-text": `'${this.props.t("moveMe")}'`
+                        }}
+                    >
+                        <div
+                            className="temperature-help-close temperature-edit-button"
+                            onClick={() => {
+                                this.setState({helpVisible: false}, () => {
+                                    localStorage.setItem("chromatic-help-hidden", "true");
+                                });
+                            }}
+                        ></div>
+                    </div>
+                }
                 <div
                     className="temperature-limit"
                     style={{
@@ -216,4 +238,5 @@ class TemperatureBar extends Component {
     }
 }
 
+const TemperatureBar = withTranslation()( _TemperatureBar );
 export default TemperatureBar;

@@ -8,6 +8,10 @@
     margin: calc(20px * var(--scale-factor)) calc(var(--margin) * 2 * var(--scale-factor));
 }
 
+.temperature-bar-container * {
+    user-select: none;
+}
+
 .small .temperature-bar-container {
     --scale-factor: 0.5;
 }
@@ -26,11 +30,75 @@
     align-items: center;
     font-size: calc(30px * var(--scale-factor));
 }
+
 .temperature-range::before {
     content: "↔";
     font-family: ComicIcons;
     color: var(--temperature-background-color);
     filter: invert(1) grayscale(1) contrast(1000);
+}
+
+.temperature-help {
+    position: absolute;
+    font-size:  calc(1em * var(--scale-factor));
+    transform: translate(-50%, calc(-100% - 40px * var(--scale-factor)));
+    width: calc(150px * var(--scale-factor));
+    padding: calc(var(--padding) * var(--scale-factor));
+    border-radius: calc(var(--outer-border-radius) * var(--scale-factor));
+    text-align: center;
+    background-color: var(--temperature-background-color);
+    margin-left: var(--position);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .5);
+    animation: bounce 1s ease-in-out infinite;
+    z-index: 2;
+}
+
+.temperature-help::before {
+    content: var(--help-text);
+    color: var(--temperature-background-color);
+    filter: invert(1) grayscale(1) contrast(1000);
+}
+
+.temperature-help::after{
+    --triangle-width: calc(var(--padding) * 1.5 * var(--scale-factor));
+    display: block;
+    content: "";
+    width: var(--triangle-width);
+    height: var(--triangle-width);
+    position: absolute;
+    top: calc(100% - var(--triangle-width)/3);
+    left: calc(50% - var(--triangle-width));
+    border: var(--triangle-width) solid transparent;
+    border-top-color: var(--temperature-background-color);
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.temperature-help-close {
+    position: absolute;
+    font-size:  1.5em;
+    top: calc(-1.5 * var(--margin) * var(--scale-factor));
+    right: calc(-1.5 * var(--margin) * var(--scale-factor));
+}
+
+.temperature-help-close::before {
+    content: "×";
+    color: transparent;
+    background: inherit;
+    background-clip: text;
+    filter: invert(1) grayscale(1) contrast(1000);
+}
+
+@keyframes bounce {
+    0%{
+        transform: translate(-50%, calc(-100% - 40px * var(--scale-factor)));
+    }
+    50%{
+        transform: translate(-50%, calc(-100% - 30px * var(--scale-factor)));
+    }
+    100%{
+        transform: translate(-50%, calc(-100% - 40px * var(--scale-factor)));
+    }
 }
 
 .temperature-limit{
@@ -132,6 +200,7 @@
     content: " ";
     border-radius: calc(20px * var(--scale-factor));
 }
+
 .temperature-bar::before {
     width: var(--before-width);
 }

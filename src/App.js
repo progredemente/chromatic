@@ -23,14 +23,15 @@ class _App extends Component {
 
     constructor(props) {
         super(props);
+        this.languages = ["en", "es", "pt"];
         let language = this.props.i18n.language.split("-")[0];
-        if(!this.props.i18n.languages.includes(language)) language = this.props.i18n.languages[0];
+        if(!this.languages.includes(language)) language = this.languages[0];
         this.props.i18n.changeLanguage(language);
         document.title = this.props.t("pageTitle");
         const units = localStorage.getItem("chromatic-units") ?? userUnits;
         this.state = {
             size: undefined,
-            temperatureRange: [0.2, 0.8],
+            temperatureRange: [0.75, 0.95],
             temperatureLimits: [null, null],
             temperatureMapLimits: undefined,
             grabbing: false,
@@ -93,7 +94,6 @@ class _App extends Component {
     changeCountry(country){
         this.setState({
             selectedCountry: country, 
-            temperatureRange: [0.2, 0.8],
             temperatureLimits: [null, null],
         }, () => {
             localStorage.setItem("chromatic-country", country);
@@ -126,6 +126,7 @@ class _App extends Component {
                     <Header
                         units={this.state.units}
                         setUnits={(units) => this.setUnits(units)}
+                        languages={this.languages}
                     />
                     <CountryStatus
                         countryCode={this.state.selectedCountry}

@@ -8,7 +8,7 @@ class _Config extends Component {
     constructor(props) {
         super(props);
 
-        this.languages = this.props.i18n.languages.map(langCode => {
+        this.languages = this.props.languages.map(langCode => {
             return [langCode, this.props.t(`languages.${langCode}`)]
         }).sort((a, b) => {
             return a[1] < b[1] ? - 1 : 1;
@@ -75,6 +75,7 @@ class _Config extends Component {
                             this.languages.map((lang) => {
                                 return (
                                     <div
+                                        key={lang[0]}
                                         className={lang[0] === this.props.i18n.language ? "selected" : ""}
                                         onClick={() => {
                                             this.props.i18n.changeLanguage(lang[0])

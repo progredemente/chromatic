@@ -21,6 +21,7 @@
     "about-4": "And here is the link:",
     "about-5": "A few weeks ago I decided to make this new version with a look closer to a real heat map. I have also added more countries and territories, translation to other languages, change of units and the possibility to edit the maximum and minimum temperature values of the scale.",
     "about-6": "I have used real data to establish the temperature values for the maps. For now I have only got the data for the countries and territories of Europe and part of Africa and Asia. The smaller countries and territories don't look as good as the rest, some don't have enough data, like the Faroe Islands and some shapes I had to draw by hand, like the island of Gozo, because they didn't exist where I got them from.",
+    "moveMe": "Move me, stretch me, shrink me or edit my limits!",
     "countries": {
         "es": "Spain",
         "pt": "Portugal",

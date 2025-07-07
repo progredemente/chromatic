@@ -9,7 +9,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: ['en', 'es', 'pt'],
+    fallbackLng: ['en'],
     load: "languageOnly",
     debug: true,
     backend: {
@@ -19,7 +19,6 @@ i18n
 
         lookupLocalStorage: "chromatic-lang",
     },
-
     interpolation: {
       escapeValue: false,
     }

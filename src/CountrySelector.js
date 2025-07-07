@@ -10,16 +10,15 @@ class _CountrySelector extends Component {
         this.state = {
             countries: this.props.i18n.getResourceBundle(props.i18n.language).countries
         }
-        this.countries = this.props.i18n.getResourceBundle(props.i18n.language).countries;
-        this.props.i18n.on("languageChanged", () => {
-            this.setState({
-                countries: this.props.i18n.getResourceBundle(props.i18n.language).countries
-            })
-        })
     }
 
     componentDidMount(){
         this.toggle();
+        this.props.i18n.on("languageChanged", () => {
+            this.setState({
+                countries: this.props.i18n.getResourceBundle(this.props.i18n.language).countries
+            })
+        })
     }
     
     componentDidUpdate({open}) {

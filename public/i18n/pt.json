@@ -21,6 +21,7 @@
     "about-4": "E aqui está a ligação:",
     "about-5": "Há algumas semanas, decidi criar esta nova versão com um aspeto mais próximo de um mapa de calor real. Também adicionei mais países e territórios, tradução para outras línguas, mudança de unidades e a possibilidade de editar os valores de temperatura máxima e mínima da escala.",
     "about-6": "Utilizei dados reais para estabelecer os valores de temperatura para os mapas. Até agora, só obtive os dados para os países e territórios da Europa e parte de África e da Ásia. Os países e territórios mais pequenos não são tão bons como os outros, alguns não têm dados suficientes, como as Ilhas Faroé, e algumas formas tive de desenhar à mão, como a ilha de Gozo, porque não existiam no lugar de onde os obtive.",
+    "moveMe": "Mova-me, estique-me, encolha-me ou edite os meus limites!",
     "countries": {
         "es": "Espanha",
         "pt": "Portugal",

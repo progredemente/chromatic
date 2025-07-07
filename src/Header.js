@@ -65,6 +65,7 @@ class _Header extends Component {
                     }}
                     units={this.props.units}
                     setUnits={this.props.setUnits}
+                    languages={this.props.languages}
                 />
                 <About
                     open={this.state.aboutVisible}

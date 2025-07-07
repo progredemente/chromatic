@@ -16,6 +16,10 @@
     cursor: pointer;
 }
 
+.country-status > div {
+    margin-top: var(--margin);
+}
+
 .small .country-status {
     transform: scale(.5) translate(50%, -50%)
 }
@@ -23,7 +27,6 @@
 .change-country-button {
     background-color: var(--text-color);
     color: var(--background-color);
-    margin-top: 10px;
     padding: 5px 10px;
     border-radius: var(--inner-border-radius);
 }
