@@ -137,7 +137,7 @@ class Map extends Component {
         this.setState({cities: []});
         this.props.setTemperatureMapLimits(undefined);
         const canvasAspectRatio = this.props.size[0] / this.props.size[1];
-        const {otherTerritories, main, surroundings, verticalView, excludedTerritories} = this.props.data;
+        const {otherTerritories, main, surroundings, excludedTerritories} = this.props.data;
         const territoriesHorizontalShifts = otherTerritories.map((territory) => {
             return canvasAspectRatio > 1 ? territory.horizontalCanvasShift[0] : territory.verticalCanvasShift[0];
         });
@@ -165,29 +165,21 @@ class Map extends Component {
         const padding = Math.max(maxWidth, maxHeight) * paddingFactor;
         maxWidth += padding * 2;
         maxHeight += padding * 2;
+        const lowerGap = maxHeight * 80 / this.props.size[1];
+        maxHeight += lowerGap;
 
-        const targetAspectRatio = verticalView ? 3/4 : 4/3;
         const originalAspectRatio = maxWidth / maxHeight;
         let adaptedWidth = maxWidth;
         let adaptedHeight = maxHeight;
         let adaptedOffsetWidth = 0;
         let adaptedOffsetHeight = 0;
-        if(originalAspectRatio > targetAspectRatio){
-            adaptedHeight = adaptedWidth / targetAspectRatio;
+        if(originalAspectRatio > canvasAspectRatio){
+            adaptedHeight = adaptedWidth / canvasAspectRatio;
             adaptedOffsetHeight = (adaptedHeight - maxHeight) / 2;
         }
         else {
-            adaptedWidth = adaptedHeight * targetAspectRatio;
+            adaptedWidth = adaptedHeight * canvasAspectRatio;
             adaptedOffsetWidth = (adaptedWidth - maxWidth) / 2;
-        }
-        
-        let frameWidth = this.props.size[0];
-        let frameHeight = this.props.size[1];
-        if(canvasAspectRatio > targetAspectRatio){
-            frameWidth = frameHeight * targetAspectRatio;
-        }
-        else {
-            frameHeight = frameWidth / targetAspectRatio;
         }
 
         const finalHorizontalPadding = padding - offsetWidth + adaptedOffsetWidth;
@@ -198,8 +190,8 @@ class Map extends Component {
         ].map((triangles) => {
             return triangles.map((point) => {
                 return [
-                    ((2 * (point[0] + finalHorizontalPadding) * frameWidth / adaptedWidth) - frameWidth) / this.props.size[0],
-                    ((2 * (point[1] + finalVerticalPadding) * frameHeight / adaptedHeight) - frameHeight) / this.props.size[1]
+                    ((2 * (point[0] + finalHorizontalPadding) * this.props.size[0] / adaptedWidth) - this.props.size[0]) / this.props.size[0],
+                    ((2 * (point[1] + lowerGap + finalVerticalPadding) * this.props.size[1] / adaptedHeight) - this.props.size[1]) / this.props.size[1]
                 ]
             })
         });
@@ -253,8 +245,8 @@ class Map extends Component {
         ].map(temperatures => {
             return temperatures.map((point) => {
                 return [
-                    ((((2 * (point[0] + finalHorizontalPadding) * frameWidth / adaptedWidth) - frameWidth) / this.props.size[0] + 1) / 2) * this.props.size[0],
-                    ((((2 * (point[1] + finalVerticalPadding) * frameHeight / adaptedHeight) - frameHeight) / this.props.size[1] + 1) / 2) * this.props.size[1],
+                    ((((2 * (point[0] + finalHorizontalPadding) * this.props.size[0] / adaptedWidth) - this.props.size[0]) / this.props.size[0] + 1) / 2) * this.props.size[0],
+                    ((((2 * (point[1] + lowerGap + finalVerticalPadding) * this.props.size[1] / adaptedHeight) - this.props.size[1]) / this.props.size[1] + 1) / 2) * this.props.size[1],
                     point[2]
                 ]
             });
@@ -262,7 +254,7 @@ class Map extends Component {
         this.normalizedMainTemperatures = normalizedMainTemperatures;
         this.normalizedTerritoriesTemperatures = normalizedTerritoriesTemperatures;
 
-        this.pixelRadius = (this.props.data.radius * frameWidth / adaptedWidth) * skip;
+        this.pixelRadius = (this.props.data.radius * this.props.size[0] / adaptedWidth) * skip;
 
         this.territoryFrame = [];
         let territoryPadding = 0;
@@ -332,8 +324,6 @@ class Map extends Component {
             this.drawFrame(normalizedCities, normalizedPhone[0]);
         })
 
-        this.frameWidth = frameWidth;
-        this.frameHeight = frameHeight;
         this.adaptedWidth = adaptedWidth;
         this.adaptedHeight = adaptedHeight;
         this.finalHorizontalPadding = finalHorizontalPadding;
@@ -403,9 +393,9 @@ class Map extends Component {
 
     click(event){
         const rect = this.canvasRef.getBoundingClientRect();
-        const x = (2 * (event.clientX - rect.left) - this.props.size[0] + this.frameWidth) * this.adaptedWidth / (2 * this.frameWidth) - this.finalHorizontalPadding;
+        const x = (2 * (event.clientX - rect.left) - this.props.size[0] + this.props.size[0]) * this.adaptedWidth / (2 * this.props.size[0]) - this.finalHorizontalPadding;
         //the vertical origin is inversed, therefore -2 and + this.props.size[1]
-        const y = (-2 * (event.clientY - rect.top) + this.props.size[1] + this.frameHeight) * this.adaptedHeight / (2 * this.frameHeight) - this.finalVerticalPadding;
+        const y = (-2 * (event.clientY - rect.top) + this.props.size[1] + this.props.size[1]) * this.adaptedHeight / (2 * this.props.size[1]) - this.finalVerticalPadding;
 
         let minDistance = Infinity;
         let temperature = null;
