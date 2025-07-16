@@ -36,6 +36,17 @@ class _About extends Component {
                     </div>
                     <div onClick={this.props.close} className="close-button"></div>
                 </div>
+                <p className="about-video">
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/gmYxeDPcEm8"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                </p>
                 <p>
                     {this.props.t("about-1")}
                 </p>

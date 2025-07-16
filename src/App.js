@@ -119,7 +119,7 @@ class _App extends Component {
 
     render() {
         return (
-            <AppsBar current='calor'>
+            <AppsBar current='chromatic'>
                 <div
                     className={`app${this.state.grabbing ? ' grabbing' : ''}${window.innerWidth < 1000 && window.innerHeight < 1200 ? ' small' : ''}`}
                 >
